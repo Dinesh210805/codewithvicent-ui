@@ -39,7 +39,7 @@ export const Home = () => {
   const logout = async () => {
     try {
       const res = await myAPIClient.get("/auth/logout", {
-        // withCredentials: true,
+        withCredentials: true,
       });
       console.log(res.data);
     } catch (err) {
