@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { PrimaryColor } from "../../theme/GlobalStyles";
-import Logo from "../../assets/images/pnglogo.png";
+// import Logo from "../../assets/images/pnglogo.png";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import useRegister from "../../hooks/auth/useRegister";
@@ -67,10 +67,7 @@ export default function Register() {
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex flexDir={"column"} p={{ base: 1, lg: 6 }} flex={1} align={"center"}>
         <Stack bg="white" p={8} spacing={4} w={"full"} maxW={"md"}>
-          <Link to="/">
-            {" "}
-            <Image src={Logo} w={200} />
-          </Link>
+          <Link to="/"> {/* <Image src={Logo} w={200} /> */}</Link>
           <Heading overflowY={"hidden"} fontSize={{ base: "2xl", lg: "3xl" }}>
             Create an Account
           </Heading>
