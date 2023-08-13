@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { myAPIClient } from "../../api/axiosInstance";
-import { UserAuthTypes } from "../../types/auth.types";
+import { UserAuthTypes } from "../../types/Authtypes";
 
 const loginUser = async (userDetails: UserAuthTypes) => {
   try {
