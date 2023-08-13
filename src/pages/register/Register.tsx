@@ -23,6 +23,7 @@ import useRegister from "../../hooks/auth/useRegister";
 
 export default function Register() {
   // LOGIN WITH GOOGLE ********************************************************
+
   const handleGoogleRegister = () => {
     window.open(
       `${import.meta.env.VITE_REACT_APP_API_URL}/auth/google/callback`,
