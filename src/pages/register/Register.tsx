@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { PrimaryColor } from "../../theme/GlobalStyles";
-import Logo from "../../assets/images/cwvlogo.PNG";
+import Logo from "../../assets/images/cwvlogo.png";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import useRegister from "../../hooks/auth/useRegister";
