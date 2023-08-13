@@ -15,6 +15,12 @@ import NavBar from "./components/layout/header/Navbar";
 import { Footer } from "./components/layout/footer/Footer";
 import Announcement from "./components/layout/header/Announcement";
 import Donate from "./pages/donate/Donate";
+import { AuthProvider } from "./store/AuthContext";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -102,5 +108,11 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
+  );
 }

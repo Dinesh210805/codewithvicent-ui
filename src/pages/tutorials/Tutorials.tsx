@@ -2,8 +2,6 @@ import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
-  Heading,
-  Image,
   Input,
   InputGroup,
   InputLeftElement,
@@ -11,9 +9,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { tutorialsData } from "../../api/fakeApi";
-import UnderConstruction from "../../assets/images/underconst.png";
 import Tutorial from "../../components/layout/tutorial/Tutorial";
-import { PrimaryBasicColor, PrimaryColor } from "../../theme/GlobalStyles";
+import { PrimaryColor } from "../../theme/GlobalStyles";
 import { useState } from "react";
 
 const Tutorials = () => {

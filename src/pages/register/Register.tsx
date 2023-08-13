@@ -12,29 +12,42 @@ import {
   InputGroup,
   InputRightElement,
   Divider,
+  CircularProgress,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PrimaryColor } from "../../theme/GlobalStyles";
 import Logo from "../../assets/images/cwvlogo.png";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import useRegister from "../../hooks/auth/useRegister";
 
 export default function Register() {
-  // REGISTER WITH GOOGLE *****************************************************
-  // const handleGoogleRegister = () => {
-  //   window.gapi.load("auth2", () => {
-  //     window.gapi.auth2.init({
-  //       client_id: "YOUR_GOOGLE_CLIENT_ID",
-  //     }).then(() => {
-  //       window.gapi.auth2.getAuthInstance().signIn().then((response) => {
-  //         // Handle Google register response here
-  //       });
-  //     });
-  //   });
-  // };
+  // LOGIN WITH GOOGLE ********************************************************
+  const handleGoogleRegister = () => {
+    window.open(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/auth/google/callback`,
+      "_self"
+    );
+  };
+
+  const navigate = useNavigate();
+
+  // REGISTER WITH CUSTOM DETAILS *****************************************************
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [fullname, setFullName] = useState("");
+
+  const { mutate, isLoading, isSuccess, error, isError } = useRegister();
+  const handleUserRegister = () => {
+    mutate({ email, password, fullname });
+    if (isSuccess) {
+      navigate("/login");
+    } else if (isError) {
+      console.log(error);
+    }
+  };
 
   const [isHovering, setIsHovering] = useState(false);
-  const [isHoveringPassword, setIsHoveringPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   // Mouse Over create account
@@ -43,20 +56,9 @@ export default function Register() {
     // Other logic to handle mouse over event
   };
 
-  // Mouse Over password
-  const handleMouseOverPassword = () => {
-    setIsHoveringPassword(true);
-    // Other logic to handle mouse over event
-  };
-
   // Mouse out create account
   const handleMouseOut = () => {
     setIsHovering(false);
-    // Other logic to handle mouse out event
-  };
-  // Mouse out password
-  const handleMouseOutPassword = () => {
-    setIsHoveringPassword(false);
     // Other logic to handle mouse out event
   };
 
@@ -84,17 +86,29 @@ export default function Register() {
           </Link>
           <FormControl isRequired id="email">
             <FormLabel>Email address</FormLabel>
-            <Input placeholder="Email" type="email" />
+            <Input
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+            />
           </FormControl>
           <FormControl isRequired id="fullname">
             <FormLabel>Fullname</FormLabel>
-            <Input placeholder="Fullname" type="text" />
+            <Input
+              placeholder="Fullname"
+              value={fullname}
+              onChange={(e) => setFullName(e.target.value)}
+              type="text"
+            />
           </FormControl>
           <FormControl isRequired id="password">
             <FormLabel>Password</FormLabel>
             <InputGroup>
               <Input
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type={showPassword ? "text" : "password"}
               />
               <InputRightElement h={"full"}>
@@ -117,11 +131,16 @@ export default function Register() {
             ></Stack>
             <Button
               color={"white"}
+              onClick={handleUserRegister}
               _hover={{ bgColor: "blue", color: "white" }}
               bgColor={PrimaryColor}
               variant={"solid"}
             >
-              Register
+              {isLoading ? (
+                <CircularProgress isIndeterminate size="22px" color="white" />
+              ) : (
+                "Register"
+              )}
             </Button>
           </Stack>
           <Flex align={"center"}>
@@ -139,8 +158,7 @@ export default function Register() {
           </Flex>
           {/* Add the "Register with Google" button */}
           <Button
-            // onClick={handleGoogleRegister}
-
+            onClick={handleGoogleRegister}
             variant="outline"
             borderWidth="2px"
             borderColor="gray.200"

@@ -1,25 +1,20 @@
-import {
-  Flex,
-  Box,
-  Heading,
-  Code,
-  Text,
-  Image,
-  useBreakpointValue,
-} from "@chakra-ui/react";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Flex, Box, Heading, Text, useBreakpointValue } from "@chakra-ui/react";
+import { useEffect, useState, useContext } from "react";
 import { myAPIClient } from "../../api/axiosInstance";
 import { HomeInfo, tutorialsData } from "../../api/fakeApi";
 import Course from "../../components/layout/course/Course";
 import Hero from "../../components/layout/hero/Hero";
 import HomeComponent from "../../components/uicomponents/homecomponent/HomeComponent";
+import { AuthContext, AuthContextType } from "../../store/AuthContext";
 import { PrimaryBasicColor, PrimaryColor } from "../../theme/GlobalStyles";
 
 export const Home = () => {
   const isLargeDevice = useBreakpointValue({ base: false, md: true, lg: true });
-
+  const { isLoggedIn, setIsLoggedIn } =
+    useContext(AuthContext) ?? ({} as AuthContextType);
   const [user, setUser] = useState<any>([]);
+
+  // WHEN USER SIGNED IN WITH GOOGLE ************************************************
 
   const getLogedInUser = async () => {
     try {
@@ -27,6 +22,7 @@ export const Home = () => {
         withCredentials: true,
       });
       console.log(res.data);
+      setIsLoggedIn(true); 
       setUser(res.data);
     } catch (err) {
       console.log(err);
@@ -34,7 +30,20 @@ export const Home = () => {
   };
   useEffect(() => {
     getLogedInUser();
-  }, []);
+    console.log(user?.user);
+    if (
+      user?.user?.displayName !== "" &&
+      user?.user?.displayName !== undefined
+    ) {
+      console.log("User is logged in!");
+      console.log(user?.user?.displayName);
+      setIsLoggedIn(true);
+    } else {
+      console.log("no user logged in!");
+      setIsLoggedIn(false);
+    }
+  }, [isLoggedIn]);
+  // WHEN  USER SIGNS IN WITH CUSTOM DETAILS **********************************************
 
   const logout = async () => {
     try {
@@ -46,6 +55,15 @@ export const Home = () => {
       console.log(err);
     }
   };
+
+  // **************************************************************************************
+
+  // WHEN  USER SIGNS IN WITH CUSTOM DETAILS **********************************************
+  // const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext) ?? {} as AuthContextType;
+
+  useEffect(() => {
+    console.log(isLoggedIn, setIsLoggedIn);
+  }, []);
 
   return (
     <Flex bg="#f8f8f8" flexDirection={"column"}>
@@ -162,8 +180,8 @@ export const Home = () => {
           </Box>
         </Flex>
         <Box>
-          {HomeInfo.map((item: any) => (
-            <HomeComponent item={item} />
+          {HomeInfo.map((item: any, index:any) => (
+            <HomeComponent key={index} item={item} />
           ))}
         </Box>
         {/* COURSES HERE-- */}

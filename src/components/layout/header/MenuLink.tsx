@@ -1,6 +1,7 @@
 import { Box, Stack, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext } from "react";
 import { FaDonate } from "react-icons/fa";
+import { AuthContext, AuthContextType } from "../../../store/AuthContext";
 import { PrimaryYellowColor } from "../../../theme/GlobalStyles";
 import { MenuItem } from "./MenuItem";
 
@@ -13,6 +14,10 @@ export const MenuLinks = ({
   active: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  // CHECK IF USER IS LOGGED IN
+  const { isLoggedIn, setIsLoggedIn } =
+    useContext(AuthContext) ?? ({} as AuthContextType);
+
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -67,7 +72,7 @@ export const MenuLinks = ({
           Algorithms
         </MenuItem>
         <MenuItem setIsOpen={setIsOpen} bdr={"bdr"} active={active} to="/login">
-          Login
+          {isLoggedIn ? "Logout" : "Login"}
         </MenuItem>
         <MenuItem setIsOpen={setIsOpen} active={active} to="/donate">
           <Box

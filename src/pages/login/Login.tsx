@@ -12,27 +12,40 @@ import {
   InputGroup,
   InputRightElement,
   Divider,
+  CircularProgress,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PrimaryColor } from "../../theme/GlobalStyles";
 import Logo from "../../assets/images/cwvlogo.png";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import useLogin from "../../hooks/auth/useLogin";
 
 export default function Login() {
-  // LOGIN WITH GOOGLE *****************************************************
+  // LOGIN WITH GOOGLE ********************************************************
   const handleGoogleLogin = () => {
-    window.open("http://localhost:8000/auth/google/callback", "_self");
+    window.open(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/auth/google/callback`,
+      "_self"
+    );
   };
 
-  // const getLogedInUser = async () => {
-  //   try {
-  //     const res = await axios.get("http://localhost:8000/auth/login/success");
-  //     console.log(res.data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const navigate = useNavigate();
+
+  // LOGIN WITH CUSTOM DETAILS *****************************************************
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { mutate, isSuccess, isLoading, error, isError } = useLogin();
+  const handleUserLogin = () => {
+    mutate({ email, password });
+    if (isSuccess) {
+      navigate("/");
+    } else if (isError) {
+      console.log(error);
+    }
+  };
+
+  // **********************************************************************************
 
   const [isHovering, setIsHovering] = useState(false);
   const [isHoveringPassword, setIsHoveringPassword] = useState(false);
@@ -84,7 +97,12 @@ export default function Login() {
           </Link>
           <FormControl isRequired id="email">
             <FormLabel>Email address</FormLabel>
-            <Input placeholder="Email" type="email" />
+            <Input
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+            />
           </FormControl>
           <FormControl isRequired id="password">
             <FormLabel>Password</FormLabel>
@@ -92,6 +110,8 @@ export default function Login() {
               <Input
                 placeholder="Password"
                 type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <InputRightElement h={"full"}>
                 <Button
@@ -128,8 +148,13 @@ export default function Login() {
               _hover={{ bgColor: "blue", color: "white" }}
               bgColor={PrimaryColor}
               variant={"solid"}
+              onClick={handleUserLogin}
             >
-              Sign In
+              {isLoading ? (
+                <CircularProgress isIndeterminate size="22px" color="white" />
+              ) : (
+                "Sign In"
+              )}
             </Button>
           </Stack>
 

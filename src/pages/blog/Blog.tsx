@@ -66,20 +66,20 @@ const Blog = () => {
 
             <TabPanels>
               <TabPanel>
-                {[1, 2, 3, 4, 5].map((post: any) => (
-                  <BlogPost language="Python" />
+                {[1, 2, 3, 4, 5].map((post: any, index:any) => (
+                  <BlogPost key={index} language="Python" />
                 ))}
               </TabPanel>
 
               <TabPanel>
-                {[1, 2, 3, 4, 5].map((post: any) => (
-                  <BlogPost language="TypeScript" />
+                {[1, 2, 3, 4, 5].map((post: any, index:any) => (
+                  <BlogPost key={index} language="TypeScript" />
                 ))}
               </TabPanel>
               <TabPanel>
                 <Box>
-                  {[1, 2, 3, 4, 5].map((post: any) => (
-                    <BlogPost language="JavaScript" />
+                  {[1, 2, 3, 4, 5].map((post: any, index:any) => (
+                    <BlogPost key={index} language="JavaScript" />
                   ))}
                 </Box>
                 <Box display={"flex"} justifyContent="center">
