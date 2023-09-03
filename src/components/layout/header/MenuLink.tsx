@@ -1,6 +1,6 @@
 import { Box, Stack, Button } from "@chakra-ui/react";
-import { useContext } from "react";
-import { FaDonate } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { FaDonate, FaMoon, FaSun } from "react-icons/fa";
 import { AuthContext, AuthContextType } from "../../../store/AuthContext";
 import { PrimaryYellowColor } from "../../../theme/GlobalStyles";
 import { MenuItem } from "./MenuItem";
@@ -14,6 +14,9 @@ export const MenuLinks = ({
   active: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  // ?TEMPORARY DARK MODE TOGGLER
+  const [darkMode, setDarkMode] = useState(false);
+
   // CHECK IF USER IS LOGGED IN
   const { isLoggedIn, setIsLoggedIn } =
     useContext(AuthContext) ?? ({} as AuthContextType);
@@ -74,6 +77,18 @@ export const MenuLinks = ({
         <MenuItem setIsOpen={setIsOpen} bdr={"bdr"} active={active} to="/login">
           {isLoggedIn ? "Logout" : "Login"}
         </MenuItem>
+        {/* <MenuItem setIsOpen={setIsOpen} bdr={"bdr"} active={active} to="/login"> */}
+          <Button
+          onClick={() => setDarkMode(!darkMode)}
+            leftIcon={darkMode ? <FaSun /> : <FaMoon />}
+            colorScheme={PrimaryYellowColor}
+            color="white"
+            variant="solid"
+            py={4.5}
+            height={8}
+            borderRadius={25}
+          ></Button>
+        {/* </MenuItem> */}
         <MenuItem setIsOpen={setIsOpen} active={active} to="/donate">
           <Box
             display="flex"
