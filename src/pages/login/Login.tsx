@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { PrimaryColor } from "../../theme/GlobalStyles";
-import Logo from "../../assets/images/logoimg.png";
+// import Logo from "../../assets/images/logoimg.png";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import useLogin from "../../hooks/auth/useLogin";
@@ -80,7 +80,7 @@ export default function Login() {
         <Stack bg="white" p={8} spacing={4} w={"full"} maxW={"md"}>
           <Link to="/">
             {" "}
-            <Image src={Logo} w={200} />
+            {/* <Image src={Logo} w={200} /> */}
           </Link>
           <Heading overflowY={"hidden"} fontSize={{ base: "2xl", lg: "3xl" }}>
             Sign in to Your Account
