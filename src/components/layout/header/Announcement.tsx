@@ -63,8 +63,8 @@ const Announcement = () => {
       >
         <Text textAlign={"center"} color={"white"} fontSize={13}>
           Support our charity and mission. Donate to{" "}
-          <Link to="/" style={{ textDecoration: "underline" }}>
-            codewithvincent
+          <Link to="/donate" style={{ textDecoration: "underline" }}>
+            codewithvicent
           </Link>
         </Text>
       </Box>

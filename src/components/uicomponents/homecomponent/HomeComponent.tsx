@@ -5,7 +5,8 @@ import { PrimaryColor } from "../../../theme/GlobalStyles";
 const HomeComponent = ({ item }: { item: any }) => {
   return (
     <Flex
-      p={{ base: 5, md: 10, lg: 20 }}
+      paddingX={{ base: 5, md: 10, lg: 250 }}
+      paddingY={{ base: 5, md: 10, lg: 20 }}
       //   my={5}
       bg={item.backgroundColor}
       alignItems={"center"}
@@ -24,7 +25,7 @@ const HomeComponent = ({ item }: { item: any }) => {
         <Box>
           <Text>{item.paragraph}</Text>
           <Text>{item.paragraph}</Text>
-          <Text>{item.paragraph}</Text>
+          {/* <Text>{item.paragraph}</Text> */}
         </Box>
       </Box>
       <Box flex={1}>

@@ -33,7 +33,7 @@ export const MenuItem = ({
           borderBottom: bdr ? `3px solid ${PrimaryYellowColor}` : "none",
         }}
         display="block"
-        fontSize={"md"}
+        fontSize={{base: 12, md: 13, lg: "md"}}
         fontWeight={500}
         color={"#000"}
         // color={active ? "white" : PrimaryColor}

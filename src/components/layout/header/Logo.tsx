@@ -9,10 +9,10 @@ type LogoProps = {
 
 export const Logo = (props: LogoProps) => {
   return (
-    <Box {...props}>
+    <Box {...props} >
       <Link to="/">
         <Text fontSize={45} color={"orange"} fontWeight="bold">
-          <Image src={LogoImage} h={10} alt="logo" />
+          <Image src={LogoImage} h={{base: 5, md: 6, lg: 10}} alt="logo" />
         </Text>
       </Link>
     </Box>

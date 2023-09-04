@@ -7,8 +7,7 @@ export const HomeInfo = [
     heading: "Master a Skill Today and Thank Me Later",
     paragraph: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe unde
         harum quis libero dicta, eum ullam, esse eius ad, reiciendis
-        quibusdam numquam voluptatem et fuga voluptatibus culpa. Eveniet,
-        illo adipisci`,
+        quibusdam `,
     image: FirstImage,
     backgroundColor: "#f7fafc",
     isRowReversed: false,
@@ -18,8 +17,7 @@ export const HomeInfo = [
     heading: "Master a Skill Today and Thank Me Later",
     paragraph: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe unde
         harum quis libero dicta, eum ullam, esse eius ad, reiciendis
-        quibusdam numquam voluptatem et fuga voluptatibus culpa. Eveniet,
-        illo adipisci`,
+        quibusdam numquam `,
     image: FirstImage,
     backgroundColor: "white",
     isRowReversed: true,
@@ -29,8 +27,7 @@ export const HomeInfo = [
     heading: "Master a Skill Today and Thank Me Later",
     paragraph: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe unde
         harum quis libero dicta, eum ullam, esse eius ad, reiciendis
-        quibusdam numquam voluptatem et fuga voluptatibus culpa. Eveniet,
-        illo adipisci`,
+        quibusdam`,
     image: FirstImage,
     backgroundColor: "#f7fafc",
     isRowReversed: false,
@@ -40,8 +37,7 @@ export const HomeInfo = [
     heading: "Master a Skill Today and Thank Me Later",
     paragraph: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe unde
         harum quis libero dicta, eum ullam, esse eius ad, reiciendis
-        quibusdam numquam voluptatem et fuga voluptatibus culpa. Eveniet,
-        illo adipisci`,
+        quibusdam `,
     image: FirstImage,
     backgroundColor: "white",
     isRowReversed: true,

@@ -189,7 +189,7 @@ export const Home = () => {
           <Heading textAlign={"center"}>Trending Courses</Heading>
           <Box
             margin={"auto"}
-            p={{ base: 1, md: 8, lg: 20 }}
+            p={{ base: 1, md: 8, lg: 50 }}
             display="flex"
             alignItems={"center"}
             justifyContent="center"
