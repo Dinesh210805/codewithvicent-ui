@@ -1,6 +1,6 @@
 # CodeWithVincent
 
-CodeWithVincent is a free online learning platform that aims to empower individuals to learn to code. With a focus on accessibility and inclusivity, CodeWithVincent provides a wide range of coding tutorials, exercises, resources, blog articles, and algorithms and data structures implementations to help beginners and experienced developers enhance their programming skills.
+CodeWithVincent is a donor-supported, AI powered online learning platform that aims to empower individuals to learn to code. With a focus on accessibility and inclusivity, CodeWithVincent provides a wide range of coding tutorials, exercises, resources, blog articles, and algorithms and data structures implementations to help beginners and experienced developers enhance their programming skills.
 
 ## Features
 
